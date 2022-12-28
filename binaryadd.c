@@ -1,19 +1,6 @@
 #include <stdio.h>
 int main()
 {
-    // cout << "\n enter no. of elements of sets A and B=";
-    // cin >> m;
-    // cin >> n;
-    // cout << "\n Enter the elements of set A=";
-    // for (i = 0; i < m; i++)
-    // {
-    //     cin >> a[i];
-    // }
-    //  cout << "\n Enter the elements of set B=";
-    //  for (i = 0; i < n; i++)
-    //  {
-    //       cin >> b[i];
-    //  }
     int a[10], b[10], s[11];
     int i, j, k, tmp1, tmp2, tmp3, d, C = 0, m, n;
     int l;
@@ -83,7 +70,7 @@ int main()
     s[j] = C;
 
     printf("\n the sum is:\n");
-    for (i = 0; i < tmp3; i++)
+    for (i = 0; i <= tmp3; i++)
     {
         printf("%d", s[i]);
     }
