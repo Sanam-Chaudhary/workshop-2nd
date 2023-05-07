@@ -1,3 +1,4 @@
+//cpp program to implement fuzzy set operations
 #include <iostream>
 using namespace std;
 #define M 10;
@@ -13,7 +14,7 @@ public:
     {
         cout << "\n enter the number of elements:\t";
         cin >> element;
-        cout << "\n enter the value of set A and B:\t";
+        cout << "\n enter the value of set A and B:\t";//any characters a,b,c,a1,b1,...
         for (i = 0; i < element; i++)
         {
             cin >> a1[i];
