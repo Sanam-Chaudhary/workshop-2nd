@@ -1,5 +1,4 @@
 // Lagrange's interpolation method
-// not dubugged
 #include <stdio.h>
 int main()
 
