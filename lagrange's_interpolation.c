@@ -1,40 +1,42 @@
 // Lagrange's interpolation method
+// not dubugged
 #include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
 int main()
-
 {
+    float x[10], y[10], a, li, value = 0;
     int i, j, n;
-    float x[10], y[10], a, lx[10], value = 0;
-    printf("\n enter the no. of data");
+
+    printf("\n enter the number of data point:");
     scanf("%d", &n);
-    printf("\n enter the value of a:");
+    printf("\n enter the value of x :");
     scanf("%f", &a);
-    printf("\n enter the data of x");
+    printf("\n enter the x data:\n");
     for (i = 0; i < n; i++)
+
     {
         scanf("%f", &x[i]);
     }
-    printf("\n enter the data y:");
+    printf("\n enter the f(x) data :\n");
     for (i = 0; i < n; i++)
     {
         scanf("%f", &y[i]);
     }
     for (i = 0; i < n; i++)
     {
-        lx[i] = 1;
         for (j = 0; j < n; j++)
         {
+            li = 1;
             if (i != j)
             {
-                lx[i] = lx[i] * ((a - x[j]) / (x[i] - x[j]));
+                li = li * ((a - x[j]) / (x[i] - x[j]));
             }
         }
-        printf("\n li[%d]=%f", i, lx[i]);
+
+        value = value + (y[i] * li);
     }
-    for (i = 0; i < n; i++)
-    {
-        value = value + y[i] * lx[i];
-        printf("\nvalue=%f", value);
-    }
-    printf("\n the interpolated value is %f", value);
+
+    printf("\n the floaterpolated value is:%f", value);
+    return 0;
 }
