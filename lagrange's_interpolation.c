@@ -38,6 +38,6 @@ int main()
     for (i = 0; i < n - 1; i++)
     {
     }
-    printf("\n the floaterpolated value is:%f", value);
+    printf("\n the interpolated value is:%f", value);
     return 0;
 }
