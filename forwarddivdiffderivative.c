@@ -1,4 +1,4 @@
-// c program to calculate derivative using divided difference formula x^3-3*x^2-7*x+8
+// c program to calculate derivative using divided difference formula 
 #include <stdio.h>
 #include <stdlib.h>
 int main()
