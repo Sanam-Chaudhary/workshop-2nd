@@ -1,34 +1,34 @@
 #include <stdio.h>
 #include <conio.h>
 #define N 10
+void swap(int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
 int main()
 {
-    int i, j, tempA, tempB,tempC, n;
-    float At=0,Aw=0;
-    int r[N], b[N], c[N], t[N], w[N],p[N];
+    int i, j, n;
+    float At = 0, Aw = 0;
+    int r[N], b[N], c[N], t[N], w[N], p[N];
     printf("\n enter the num of processes:");
     scanf("%d", &n);
     printf("\n enter the release time and burst time:");
     for (i = 0; i < n; i++)
     {
         scanf("%d %d", &r[i], &b[i]);
-        p[i]=i+1;
+        p[i] = i + 1;
     }
     for (i = 0; i < n - 1; i++)
     {
-        for (j = 0; j < n - i - 1; j++)
+        for (j = 0; j < n - 1; j++)
         {
             if (r[j] > r[j + 1])
             {
-                tempA = r[j];
-                r[j] = r[j + 1];
-                r[j + 1] = tempA;
-                tempB = b[j];
-                b[j] = b[j + 1];
-                b[j + 1] = tempB;
-                tempC=p[j];
-                p[j]=p[j+1];
-                p[j+1]=tempC;
+                swap(&r[j], &r[j + 1]);
+                swap(&b[j], &b[j + 1]);
+                swap(&p[j], &p[j + 1]);
             }
         }
     }
@@ -45,9 +45,9 @@ int main()
     At = At / n;
     Aw = Aw / n;
     printf("\n\t process\trelease_time\tburst_time\tcompletion_time\t turn_around_time\twaiting_time\n");
-    for(i=0;i<n;i++)
+    for (i = 0; i < n; i++)
     {
-        printf("\t  p%d\t\t%d\t\t%d\t\t\t%d\t\t%d\t\t\t%d\n",p[i],r[i],b[i],c[i],t[i],w[i]);
+        printf("\t  p%d\t\t%d\t\t%d\t\t\t%d\t\t%d\t\t\t%d\n", p[i], r[i], b[i], c[i], t[i], w[i]);
     }
     printf("\n avg. turn around time is %0.2f\n avg. wating time is %0.2f", At, Aw);
     return 0;
