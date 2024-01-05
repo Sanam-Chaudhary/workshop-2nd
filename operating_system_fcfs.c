@@ -3,15 +3,16 @@
 #define N 10
 int main()
 {
-    int i, j, tempA, tempB, n;
+    int i, j, tempA, tempB,tempC, n;
     float At=0,Aw=0;
-    int r[N], b[N], c[N], t[N], w[N];
+    int r[N], b[N], c[N], t[N], w[N],p[N];
     printf("\n enter the num of processes:");
     scanf("%d", &n);
     printf("\n enter the release time and burst time:");
     for (i = 0; i < n; i++)
     {
         scanf("%d %d", &r[i], &b[i]);
+        p[i]=i+1;
     }
     for (i = 0; i < n - 1; i++)
     {
@@ -25,6 +26,9 @@ int main()
                 tempB = b[j];
                 b[j] = b[j + 1];
                 b[j + 1] = tempB;
+                tempC=p[j];
+                p[j]=p[j+1];
+                p[j+1]=tempC;
             }
         }
     }
@@ -43,7 +47,7 @@ int main()
     printf("\n\t process\trelease_time\tburst_time\tcompletion_time\t turn_around_time\twaiting_time\n");
     for(i=0;i<n;i++)
     {
-        printf("\t  p%d\t\t%d\t\t%d\t\t\t%d\t\t%d\t\t\t%d\n",i+1,r[i],b[i],c[i],t[i],w[i]);
+        printf("\t  p%d\t\t%d\t\t%d\t\t\t%d\t\t%d\t\t\t%d\n",p[i],r[i],b[i],c[i],t[i],w[i]);
     }
     printf("\n avg. turn around time is %0.2f\n avg. wating time is %0.2f", At, Aw);
     return 0;
