@@ -81,11 +81,5 @@ int main()
         printf("\t  p%d\t\t%d\t\t%d\t\t\t%d\t\t%d\t\t\t%d\n", p[i], r[i], b[i], c[i], t[i], w[i]);
     }
     printf("\n avg. turn around time is %0.2f\n avg. wating time is %0.2f", At, Aw);
-
-    printf("\n\t process\trelease_time\tburst_time\tcompletion_time\n");
-    for (i = 0; i < n; i++)
-    {
-        printf("\t  p%d\t\t%d\t\t%d\t%d\n", p[i], r[i], b[i], c[i]);
-    }
     return 0;
 }
