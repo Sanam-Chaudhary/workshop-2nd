@@ -81,5 +81,6 @@ int main()
         printf("\t  p%d\t\t%d\t\t%d\t\t\t%d\t\t%d\t\t\t%d\n", p[i], r[i], b[i], c[i], t[i], w[i]);
     }
     printf("\n avg. turn around time is %0.2f\n avg. wating time is %0.2f", At, Aw);
-    return 0;
+    
+    return 1;
 }
