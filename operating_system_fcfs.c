@@ -32,11 +32,22 @@ int main()
             }
         }
     }
-    int d = 0;
+
+    c[0] = b[0];
+    int d=0;
+
+    for (i = 1; i < n; i++)
+    {
+    if (r[i] > c[i - 1])//if there is delay for arrival of next process after the execution of prev process
+        {
+            d=r[i];
+            //c[i] = b[i] + r[i];
+        }
+        d+=b[i];
+        c[i]=d;
+    }
     for (i = 0; i < n; i++)
     {
-        d += b[i];
-        c[i] = d;
         t[i] = c[i] - r[i];
         w[i] = t[i] - b[i];
         At += t[i];
