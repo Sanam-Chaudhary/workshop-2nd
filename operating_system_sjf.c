@@ -10,7 +10,7 @@ void swap(int *a, int *b)
 
 int main()
 {
-    int i, j, k, n, r[N], b[N], c[N], t[N], w[N];
+    int i, j,  n, r[N], b[N], c[N], t[N], w[N];
     float At = 0, Aw = 0;
     int p[N];
     printf("\n enter the number of processes:");
@@ -43,48 +43,37 @@ int main()
             }
         }
     }
-
-    for (i = 0; i < n; i++)
-    {
-        printf("%d\t%d\n", r[i], b[i]);
-    }
-
-    c[0] = b[0];
-    for (j = 1; j < n; j++)
-    {
-        c[j] = (c[j - 1] >= r[j]) ? c[j - 1] + b[j] : r[j] + b[j];
-
-        k = j - 1;
-        while (k >= 0 && c[k] >= r[j])
-        {
-            if (b[k] > b[j])
-            {
-                swap(&r[k], &r[j]);
-                swap(&b[k], &b[j]);
-                swap(&p[k], &p[j]);
-            }
-            k--;
-        }
-    }
-
-    int d = 0;
-    for (i = 0; i < n; i++)
-    {
-        d += b[i];
-        c[i] = d;
-        t[i] = c[i] - r[i];
-        w[i] = t[i] - b[i];
-        At += t[i];
-        Aw += w[i];
-    }
-    At = At / n;
-    Aw = Aw / n;
+    int currentTime = 0;
+    int remP = n;
     printf("\n\t process\trelease_time\tburst_time\tcompletion_time\t turn_around_time\twaiting_time\n");
-    for (i = 0; i < n; i++)
-    {
-        printf("\t  p%d\t\t%d\t\t%d\t\t\t%d\t\t%d\t\t\t%d\n", p[i], r[i], b[i], c[i], t[i], w[i]);
-    }
-    printf("\n avg. turn around time is %0.2f\n avg. wating time is %0.2f", At, Aw);
 
-    return 1;
+    while (remP > 0) {
+        int index = -1;
+        int burst = N;
+
+        for (i = 0; i < n; i++) {
+            if (r[i] <= currentTime && b[i] < burst) {
+                burst = b[i];
+                index = i;
+            }
+        }
+
+        if (index == -1) {
+            currentTime++;
+            continue;
+        }
+
+        printf("\t  P%d\t\t%d\t\t%d\t\t\t%d\t\t%d\t\t\t%d\n",
+               p[index],
+               r[index],
+               b[index],
+               currentTime + b[index],
+               currentTime + b[index] - r[index],
+               currentTime - r[index]);
+
+        currentTime += b[index];
+        b[index] = N;  // Mark the process as completed
+        remP--;
+    }
+
 }
