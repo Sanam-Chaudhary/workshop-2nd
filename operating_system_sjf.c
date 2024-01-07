@@ -1,7 +1,6 @@
-#include <stdio.h>
-#include <conio.h>
+#include<stdio.h>
+#include<conio.h>
 #define N 10
-
 void swap(int *a, int *b)
 {
     int temp = *a;
@@ -11,8 +10,8 @@ void swap(int *a, int *b)
 
 int main()
 {
-    int i, j, k, n, r[N], b[N], c[N],t[N],w[N];
-    float At=0,Aw=0;
+    int i, j, k, n, r[N], b[N], c[N], t[N], w[N];
+    float At = 0, Aw = 0;
     int p[N];
     printf("\n enter the number of processes:");
     scanf("%d", &n);
@@ -45,12 +44,18 @@ int main()
         }
     }
 
+    for (i = 0; i < n; i++)
+    {
+        printf("%d\t%d\n", r[i], b[i]);
+    }
 
+    c[0] = b[0];
     for (j = 1; j < n; j++)
     {
-        c[j] = c[j - 1] + b[j];
+        c[j] = (c[j - 1] >= r[j]) ? c[j - 1] + b[j] : r[j] + b[j];
+
         k = j - 1;
-        while (c[k] >= r[j] && k >= 0)
+        while (k >= 0 && c[k] >= r[j])
         {
             if (b[k] > b[j])
             {
@@ -62,13 +67,11 @@ int main()
         }
     }
 
-    c[0] = b[0];
     int d = 0;
-
     for (i = 0; i < n; i++)
     {
-        d+=b[j];
-        c[j]=d;
+        d += b[i];
+        c[i] = d;
         t[i] = c[i] - r[i];
         w[i] = t[i] - b[i];
         At += t[i];
@@ -82,6 +85,6 @@ int main()
         printf("\t  p%d\t\t%d\t\t%d\t\t\t%d\t\t%d\t\t\t%d\n", p[i], r[i], b[i], c[i], t[i], w[i]);
     }
     printf("\n avg. turn around time is %0.2f\n avg. wating time is %0.2f", At, Aw);
-    
+
     return 1;
 }
