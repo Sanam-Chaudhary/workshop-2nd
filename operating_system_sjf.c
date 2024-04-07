@@ -10,7 +10,7 @@ void swap(int *a, int *b)
 
 int main()
 {
-    int i, j,  n, r[N], b[N], c[N], t[N], w[N];
+    int i, j,  n, r[N], b[N];
     float At = 0, Aw = 0;
     int p[N];
     printf("\n enter the number of processes:");
@@ -70,10 +70,12 @@ int main()
                currentTime + b[index],
                currentTime + b[index] - r[index],
                currentTime - r[index]);
-
+        At+=currentTime + b[index] - r[index];
+        Aw+=currentTime - r[index];
         currentTime += b[index];
-        b[index] = N;  // Mark the process as completed
+        b[index] = N;
         remP--;
     }
+    printf("\n avg.TAT is %0.2f\n avg.WT is %0.2f",At,Aw);
 
 }

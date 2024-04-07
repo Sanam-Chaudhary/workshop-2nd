@@ -12,7 +12,7 @@ int main()
     printf("\nEnter the number of processes and resources: ");
     scanf("%d%d", &p, &r);
     for (int i = 0; i < p; i++)
-        processes[i] = i;
+        processes[i] = i+1;
 
     printf("\nEnter the Allocated resources:\n");
     for (int i = 0; i < p; i++)
