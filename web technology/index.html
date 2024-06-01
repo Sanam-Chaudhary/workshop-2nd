@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>google search</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css"
+    />
+  </head>
+  <body>
+    <div class="nav">
+      <a href="http://gmail.com">Gmail</a>
+      <a href="https://www.google.com/imghp?hl=en&ogbl">Images</a>
+    </div>
+    <div class="container">
+      <div class="logo">
+        <img
+          src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+          alt="Google"
+        />
+      </div>
+      <form action="https://www.google.com/search" method="get">
+        <div class="search-box">
+          <i class="fa-thin fa-magnifying-glass" id="icon"></i>
+          <input type="text" id="search-box" placeholder="Search" name="q" />
+          <i class="fa-thin fa-microphone"></i>
+          <i class="fa-thin fa-camera-retro" id="lens"></i>
+        </div>
+        <input role="button" type="submit" value="Google Search" id="button" />
+        <input
+          role="button"
+          type="button"
+          onclick="lucky()"
+          value="I'm Feeling Lucky"
+          href="https://doodles.google/"
+          id="button"
+        />
+      </form>
+    </div>
+
+    <script>
+      function lucky() {
+        window.location.href = "https://doodles.google/";
+      }
+    </script>
+    <!-- <script src="https://kit.fontawesome.com/1234567890.js" crossorigin="anonymous"></script></body> -->
+  </body>
+</html>
